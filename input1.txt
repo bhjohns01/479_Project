@@ -1,0 +1,3 @@
+16oz Water,Popsicle,Eggs [3,4]
+Bread,Frozen Bagel Bites,Popsicle [5,5]
+1 Gallon Water,Pint of Ice Cream,Frozen Pizza [2,5]

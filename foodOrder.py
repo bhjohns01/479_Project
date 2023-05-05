@@ -34,7 +34,9 @@ class foodOrder:
             "Popsicle": {"isFrozen": True, "isFragile": True, "size": 1},
             "Pint of Ice Cream": {"isFrozen": True, "isFragile": False, "size": 2},
             "Frozen Pizza": {"isFrozen": True, "isFragile": False, "size": 3},
-            "Eggs": {"isFrozen": False, "isFragile": True, "size": 2}    
+            "Eggs": {"isFrozen": False, "isFragile": True, "size": 2},
+            "Bread": {"isFrozen": False, "isFragile": True, "size": 3},
+            "Frozen Bagel Bites": {"isFrozen": True, "isFragile": False, "size": 2}
         }
 
         #append item if on the menu
@@ -50,15 +52,15 @@ class foodOrder:
                                          "isFragile": item["isFragile"], "size": item["size"]}
             
             
-            print(f"{item_name} added to the order")
-        else:
-            print(f"Sorry, we don't have {item_name} on the menu")
+            #print(f"{item_name} added to the order")
+        #else:
+            #print(f"Sorry, we don't have {item_name} on the menu")
 
 
 # # # # # # # # # # # # # # #
 # --- Testing the class --- #
 # # # # # # # # # # # # # # # 
-
+'''
 item = ["16oz Water", "16oz Water", "Eggs", "Frozen Pizza", "Soda"]
 
 # Test call of foodOrder Class
@@ -68,3 +70,4 @@ print("Location: " + str(order1.deliveryLoc) + "\n")
 for i in order1.items:
     print(order1.items[i])
     print('\n')
+'''
