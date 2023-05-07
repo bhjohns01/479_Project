@@ -20,9 +20,10 @@ class Robot():
     
     path = []
     orders = []
-    def __init__(self, path=None, orders=None):
-        orders = orders
-        path = path
+    def __init__(self, path=None, orders=None, delivery=None):
+        self.orders = orders
+        self.path = path
+        self.delivery = delivery
 
     def printPath(self):
         print(self.path)
