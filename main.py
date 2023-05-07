@@ -179,7 +179,7 @@ def main():
     #call A* heuristic
     start = (0, 0)
     goal = readLocations[0] # will need to for-loop around somehow
-    g.A_star(grid, start, goal, robots)
+    g.A_star(grid, start, robots)
     for robot in robots:
         robot.printPath()
 

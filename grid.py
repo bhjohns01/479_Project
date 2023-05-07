@@ -20,28 +20,28 @@ class Robot():
     
     path = []
     orders = []
-    def __init__(self, path=None, orders=None, delivery=None):
-        self.orders = orders
+    delivery = []
+    def __init__(self, path=None):
         self.path = path
-        self.delivery = delivery
 
     def printPath(self):
         print(self.path)
 
-def A_star(grid, start, end, robots):
+def A_star(grid, start, robots):
     #create start and end nodes
     startNode = Node(None, start)
-    endNode = Node(None, end)
-    startNode.g = 0
-    startNode.h = (startNode.position[0] - endNode.position[0])**2 + (startNode.position[1] - endNode.position[1])**2 #pythagorean theorem
-    startNode.f = startNode.g + startNode.h
-
+    #run A* for each robot
     closedNodes = []
 
-
-    #run A* for each robot
     for robot in robots:
         openNode = startNode
+        closedNodes.clear()
+        #have to implement multiple orders
+        endNode = Node(None, robot.delivery[0])
+
+        startNode.g = 0
+        startNode.h = (startNode.position[0] - endNode.position[0])**2 + (startNode.position[1] - endNode.position[1])**2 #pythagorean theorem
+        startNode.f = startNode.g + startNode.h
 
         while openNode != endNode:
              # Get the current node
@@ -83,37 +83,6 @@ def A_star(grid, start, end, robots):
             current = current.parent
             robot.path = path[::-1]
         return
-
-def main():
-
-    NUMBER_OF_ROBOTS = 10
-    GOAL = (9,9)
-    START = (0, 0)
-
-    robots = [Robot() for _ in range(NUMBER_OF_ROBOTS)]
-
-    #create board
-    rows, cols = (10,10)
-    #generate a board with no obstacles
-    # 0 = open, 1 = obstacle
-    grid = [[0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-    
-    A_star(grid, START, GOAL, robots)
-    for robot in robots:
-        robot.printPath()
-
-if __name__ == '__main__':
-    main()
-
          
          
     
