@@ -84,6 +84,7 @@ def A_star(grid, start, end, robots):
                     else:
                         #unfavorable heuristic
                         closedNodes.append(childNode)
+
 def main():
 
     NUMBER_OF_ROBOTS = 10

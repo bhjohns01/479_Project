@@ -32,13 +32,21 @@ class foodOrder:
         # SIZE: small = 1 // medium = 2 // large = 4
         menu = {
             "16oz Water": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Sprite": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Diet Coke": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Coffee": {"isFrozen": False, "isFragile": False, "size": 1},
             "1 Gallon Water": {"isFrozen": False, "isFragile": False, "size": 4},
+            "1 Gallon Milk": {"isFrozen": False, "isFragile": False, "size": 4},
             "Popsicle": {"isFrozen": True, "isFragile": True, "size": 1},
             "Pint of Ice Cream": {"isFrozen": True, "isFragile": False, "size": 2},
+            "Cookie Dough": {"isFrozen": True, "isFragile": False, "size": 2},
             "Frozen Pizza": {"isFrozen": True, "isFragile": False, "size": 4},
             "Eggs": {"isFrozen": False, "isFragile": True, "size": 2},
-            "Bread": {"isFrozen": False, "isFragile": True, "size": 4},
-            "Frozen Bagel Bites": {"isFrozen": True, "isFragile": False, "size": 2}
+            "Bread": {"isFrozen": False, "isFragile": True, "size": 2},
+            "Frozen Bagel Bites": {"isFrozen": True, "isFragile": False, "size": 2},
+            "Chicken": {"isFrozen": True, "isFragile": False, "size": 2},
+            "Doritos": {"isFrozen": False, "isFragile": False, "size": 2},
+            "Lays": {"isFrozen": False, "isFragile": False, "size": 2}
         }
 
         #append item if on the menu

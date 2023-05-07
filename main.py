@@ -1,6 +1,7 @@
 from foodOrder import foodOrder
 import numpy as np
 import random
+import grid as g
 
 # pass in a single order and return bagged items
 def sorting(order):
@@ -9,21 +10,24 @@ def sorting(order):
     bag1_cap, bag2_cap = 0, 0
 
     #separate objects into arrays by size
-    for item in order:
-        if item["size"] == 4:
+    for item in order.items:
+        item_attributes = order.items[item]
+        if item_attributes["size"] == 4:
             large.append(item)
-        if item["size"] == 2:
+        if item_attributes["size"] == 2:
             medium.append(item)
-        if item["size"] == 1:
+        if item_attributes["size"] == 1:
             small.append(item)
-
-    # put in freezer bag
-    for i in order:
-        if i["isFrozen"] == True:
-            print(i + " was placed in a freezer bag.\n")
+        # put in freezer bag
+        #if item_attributes["isFrozen"] == True:
+        #    print(item + " was placed in a freezer bag.\n")  
+        # check if fragile
+        if item_attributes["isFragile"] == True:
+            fragile.append(item)
+         #   print(item + " is a fragile item and was bagged last.\n")
 
     # bag large items first
-    if large is not None:
+    if len(large) > 0:
         bag1.append(large[0])
         bag1_cap = 4
     if len(large) == 2:
@@ -31,11 +35,9 @@ def sorting(order):
         bag2_cap = 4
 
     # bag medium items
-    if medium is not None:
+    if len(medium) > 0:
         for m in range(len(medium)):
-            if m["isFragile"] == True:
-                fragile.append(m)
-            else:
+            if medium[m] not in fragile:
                 if bag1_cap <=2:
                     bag1.append(medium[m])
                     bag1_cap += 2
@@ -44,11 +46,9 @@ def sorting(order):
                     bag2_cap += 2
 
     # bag small items
-    if small is not None:
+    if len(small) > 0:
         for s in range(len(small)):
-            if s["isFragile"] == True:
-                fragile.append(s)
-            else:
+            if small[s] not in fragile:
                 if bag1_cap <=3:
                     bag1.append(small[s])
                     bag1_cap += 1
@@ -57,20 +57,28 @@ def sorting(order):
                     bag2_cap += 1
 
     # bag fragile items
-    if fragile is not None:
+    if len(fragile) > 0:
         for f in range(len(fragile)):
+            f_temp = 0
+            bagged_flag = 0
+            for i in enumerate(order.items.keys()):
+                if fragile[f] == i[1]:
+                    index = i[1]
+                    f_temp = order.items[index]
             if bag1_cap < 4:
-                if f["size"] == 2 and bag1_cap <= 2:
+                if f_temp["size"] == 2 and bag1_cap <= 2:
                     bag1.append(fragile[f])
                     bag1_cap += 2
-                if f["size"] == 1 and bag1_cap <= 3:
+                    bagged_flag = 1
+                if f_temp["size"] == 1 and bag1_cap <= 3:
                     bag1.append(fragile[f])
                     bag1_cap += 1
-            if bag2_cap < 4:
-                if f["size"] == 2 and bag2_cap <= 2:
+                    bagged_flag = 1
+            if bag2_cap < 4 and bagged_flag == 0:
+                if f_temp["size"] == 2 and bag2_cap <= 2:
                     bag2.append(fragile[f])
                     bag2_cap += 2
-                if f["size"] == 1 and bag1_cap <= 3:
+                if f_temp["size"] == 1 and bag1_cap <= 3:
                     bag2.append(fragile[f])
                     bag2_cap += 1
 
@@ -78,6 +86,7 @@ def sorting(order):
 
 
 def main():
+
     #user inputs
     filename = input("Enter the filename: ") # file includes order and delivery location
     numRobots = input("Enter the number of robots: ")
@@ -94,16 +103,36 @@ def main():
             readOrders.append(items_list)
             readLocations.append(location_list)
 
-    #create a list of order objects 
+    # create a list of order objects 
     orders = []
+    print("\n- - - - - - - - - - - - Orders Placed - - - - - - - - - - - - \n")
     for o in range(len(readOrders)):
         orders.append(foodOrder(readLocations[o], readOrders[o]))
+        print("Order " + str(o + 1) + ":")
+        print(readOrders[o], end='')
+        print('\n')
 
-    bag1, bag2 = sorting(orders[0])
-    ##### past here, just ideas of implementation
+    # bag the orders accordingly
+    print("- - - - - - - - - - - Bagging the orders - - - - - - - - - -\n")
+    bagged_orders = []
+    for o in range(len(orders)):
+        bagged_orders.append(sorting(orders[o]))
+        print("Order " + str(o + 1) + ":" )
+        print("\tBag 1: ", end = '')
+        for x in range(len(bagged_orders[o][0])):
+            print(bagged_orders[o][0][x], end = '   ')
+        print("\n\tBag 2: ", end = '')
+        for x in range(len(bagged_orders[o][1])):
+            print(bagged_orders[o][1][x], end = '   ')
+        print('\n')
+
+    #create robot objects 
+    robots = []
+    for x in range(int(numRobots)):
+          robots.append(g.Robot)
 
     #create grid
-    size = 5
+    size = 10
     grid = np.zeros((size, size))
 
     #flag random indices for random obstacles
@@ -113,7 +142,14 @@ def main():
                 continue
             if random.random() < 0.1: #probability of obstacle 10%
                 grid[i][j] = 1
+    print(grid)
 
+    #call A* heuristic
+    start = (0, 0)
+    goal = readLocations[0] # will need to for-loop around somehow
+    g.A_star(grid, start, goal, robots)
+    for robot in robots:
+        robot.printPath()
 
     
 if __name__ == '__main__':
