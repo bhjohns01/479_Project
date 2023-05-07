@@ -34,7 +34,8 @@ class foodOrder:
             "16oz Water": {"isFrozen": False, "isFragile": False, "size": 1},
             "Sprite": {"isFrozen": False, "isFragile": False, "size": 1},
             "Diet Coke": {"isFrozen": False, "isFragile": False, "size": 1},
-            "Coffee": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Black Coffee": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Latte": {"isFrozen": False, "isFragile": False, "size": 1},
             "1 Gallon Water": {"isFrozen": False, "isFragile": False, "size": 4},
             "1 Gallon Milk": {"isFrozen": False, "isFragile": False, "size": 4},
             "Popsicle": {"isFrozen": True, "isFragile": True, "size": 1},
@@ -45,7 +46,9 @@ class foodOrder:
             "Bread": {"isFrozen": False, "isFragile": True, "size": 2},
             "Frozen Bagel Bites": {"isFrozen": True, "isFragile": False, "size": 2},
             "Chicken": {"isFrozen": True, "isFragile": False, "size": 2},
+            "Salad": {"isFrozen": False, "isFragile": False, "size": 2},
             "Doritos": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Spicy Doritos": {"isFrozen": False, "isFragile": False, "size": 1},
             "Lays": {"isFrozen": False, "isFragile": False, "size": 1},
             "Sun Chips": {"isFrozen": False, "isFragile": False, "size": 1}
         }

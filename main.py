@@ -148,6 +148,7 @@ def main():
         if len(robots[r].orders) < 2 and order_idx < len(orders):
             robots[r].orders.append(bagged_orders[order_idx][0])
             bags_in_r += 1
+            robots[r].delivery.append(readLocations[order_idx])
             # if there is a second bag in the order
             if len(bagged_orders[order_idx][1]) != 0:
                 robots[r].orders.append(bagged_orders[order_idx][1])
@@ -157,6 +158,7 @@ def main():
             if bags_in_r < 2 and order_idx < len(orders):
                 if len(bagged_orders[order_idx][1]) == 0:
                     robots[r].orders.append(bagged_orders[order_idx][0])
+                    robots[r].delivery.append(readLocations[order_idx])
                     order_idx += 1
                     bags_in_r += 1
 
