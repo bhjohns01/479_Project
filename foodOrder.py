@@ -45,8 +45,9 @@ class foodOrder:
             "Bread": {"isFrozen": False, "isFragile": True, "size": 2},
             "Frozen Bagel Bites": {"isFrozen": True, "isFragile": False, "size": 2},
             "Chicken": {"isFrozen": True, "isFragile": False, "size": 2},
-            "Doritos": {"isFrozen": False, "isFragile": False, "size": 2},
-            "Lays": {"isFrozen": False, "isFragile": False, "size": 2}
+            "Doritos": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Lays": {"isFrozen": False, "isFragile": False, "size": 1},
+            "Sun Chips": {"isFrozen": False, "isFragile": False, "size": 1}
         }
 
         #append item if on the menu

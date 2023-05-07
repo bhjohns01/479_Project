@@ -1,4 +1,4 @@
-import random
+import math 
 
 
 class Node():
@@ -17,8 +17,9 @@ class Node():
 class Robot():
     
     def __init__(self):
-        orders = []
-        path = []
+        self.orders = []
+        self.path = []
+        self.delivery = []
 
     def printPath(self):
         for node in self.path:
@@ -38,8 +39,9 @@ def A_star(grid, start, end, robots):
         openNodes.append(startNode) 
 
         while len(openNodes) > 0:
-            currentNode = openNodes.pop
+            currentNode = openNodes.pop()
             closedNodes.append(currentNode)
+            currentNode.f = math.sqrt((currentNode.position[0] - end[0])**2 + (currentNode.position[1] - end[1])**2) #pythagorean theorem
             if currentNode == endNode:
                 #done
                 path = []
@@ -55,11 +57,11 @@ def A_star(grid, start, end, robots):
                     #if there's no obstacle and it's unexplored, then we add it to nextNodes array
                     tempNode = (currentNode.position[0] + newPosition[0], currentNode.position[1] + newPosition[1])
                     #check bound
-                    if tempNode.position[0] > len(grid[0]) or tempNode.position[1] > len(grid) or tempNode.position[0] < 0 or tempNode.position[1] < 0:
+                    if ((tempNode[0] or tempNode[1]) > len(grid)) or ((tempNode[0] or tempNode[1]) < 0):
                         #out of bounds
                         continue
                     #check if obstacle
-                    if grid[tempNode.position[0]][tempNode.position[1]] == 1:
+                    if grid[tempNode[0]][tempNode[1]] == 1:
                         #obstacle
                         continue
                     #check if already explored
@@ -69,7 +71,7 @@ def A_star(grid, start, end, robots):
 
                     childNode = Node(currentNode, tempNode)
                     childNode.g = currentNode.g + 1
-                    childNode.h = (childNode.position[0] - end.position[0])**2 + (childNode.position[1] - end.position[1])**2 #pythagorean theorem
+                    childNode.h = math.sqrt((childNode.position[0] - end[0])**2 + (childNode.position[1] - end[1])**2) #pythagorean theorem
                     childNode.f = childNode.g + childNode.h
                     children.append(childNode)
 
@@ -77,6 +79,8 @@ def A_star(grid, start, end, robots):
                     for node in openNodes:
                         if childNode == node and childNode.g > node.g:
                             continue
+
+
 
                     if childNode.f < currentNode.f:
                         #favorable heuristic
