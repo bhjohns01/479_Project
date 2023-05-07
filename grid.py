@@ -1,4 +1,4 @@
-import random
+import math 
 
 
 class Node():
