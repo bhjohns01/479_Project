@@ -108,7 +108,7 @@ def main():
         for line in lines:
             items, locations = line.rsplit(' ', 1)
             items_list = items.split(',')
-            location_list = [int(x) for x in locations.strip('[]').split(',')]
+            location_list = [int(x) for x in locations.strip('()').split(',')]
             readOrders.append(items_list)
             readLocations.append(location_list)
 
@@ -172,8 +172,12 @@ def main():
         for j in range(size):
             if i == 0 and j == 0: #skip (0, 0), aka Food Warehouse
                 continue
-            if random.random() < 0.1: #probability of obstacle 10%
+            if random.random() < 0.15: #probability of obstacle 10%
                 grid[i][j] = 1
+    for i in range(len(readLocations)):
+        if grid[readLocations[i][0]][readLocations[i][1]] == 1:
+            grid[readLocations[i][0]][readLocations[i][1]] =0
+
     print(grid)
 
     #call A* heuristic

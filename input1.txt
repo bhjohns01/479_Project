@@ -1,13 +1,13 @@
-16oz Water,Popsicle,Eggs,Spicy Doritos [3,4]
-Bread,Frozen Bagel Bites,Popsicle,Sprite [5,5]
-1 Gallon Milk,Chicken,Eggs [7,5]
-Sprite,Lays,Popsicle [6,3]
-16oz Water,Diet Coke,Spicy Doritos [9,7]
-Popsicle,Cookie Dough,Latte [2,8]
-Lays,Diet Coke,16oz Water [6,8]
-Sprite,Diet Coke,Salad,Spicy Doritos [9,9]
-Popsicle,Latte,Doritos,Lays [3,7]
-Salad,Sprite,Sun Chips [6,2]
-Eggs,Bread,Chicken,Sun Chips [8,3]
-Coffee,16oz Water,Lays [6,5]
-Pint of Ice Cream,16oz Water,Popsicle [4,9]
+16oz Water,Popsicle,Eggs,Spicy Doritos (3,4)
+Bread,Frozen Bagel Bites,Popsicle,Sprite (5,5)
+1 Gallon Milk,Chicken,Eggs (7,5)
+Sprite,Lays,Popsicle (6,3)
+16oz Water,Diet Coke,Spicy Doritos (9,7)
+Popsicle,Cookie Dough,Latte (2,8)
+Lays,Diet Coke,16oz Water (6,8)
+Sprite,Diet Coke,Salad,Spicy Doritos (9,9)
+Popsicle,Latte,Doritos,Lays (3,7)
+Salad,Sprite,Sun Chips (6,2)
+Eggs,Bread,Chicken,Sun Chips (8,3)
+Coffee,16oz Water,Lays (6,5)
+Pint of Ice Cream,16oz Water,Popsicle (4,9)
