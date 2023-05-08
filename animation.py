@@ -3,7 +3,7 @@ import turtle
 
 import numpy as np
 # Not sure if I need to import robot if an object is passed to a function
-import robot
+from grid import Robot
 
 import random 
 sc=turtle.Screen()
@@ -145,77 +145,5 @@ def runAnimation(robots, grid):
                     else:
                         moveRobots(bots[j], currentLocation = robots[j].path[i], nextLocation = robots[j].path[i + 1])
 
-
-       
-            
-        
-
-
-
-
-
-
-brian = robot.Robot()
-brian.tracePath([0,0])
-brian.tracePath([0,1])
-brian.tracePath([1,1])
-brian.tracePath([2,1])
-brian.tracePath([2,2])
-
-
-kati = robot.Robot()
-kati.tracePath([0,0])
-kati.tracePath([0,1])
-kati.tracePath([0,2])
-kati.tracePath([0,3])
-kati.tracePath([0,4])
-kati.tracePath([0,5])
-kati.tracePath([1,5])
-kati.tracePath([1,6])
-kati.tracePath([2,6])
-
-
-
-bryce = robot.Robot()
-bryce.tracePath([0,0])
-bryce.tracePath([1,1])
-bryce.tracePath([1,2])
-bryce.tracePath([2,1])
-
-bryce.tracePath([2,2])
-bryce.tracePath([2,3])
-bryce.tracePath([2,4])
-
-
-
-
-size = 20
-grid = np.zeros((size, size))
-
-#flag random indices for random obstacles
-for i in range(size):
-    for j in range(size):
-        if i == 0 and j == 0: #skip (0, 0), aka Food Warehouse
-            continue
-        if random.random() < 0.1: #probability of obstacle 10%
-            grid[i][j] = 1
-print(grid)
-
-
-
-
-
-
-bots = [brian, kati, bryce]
-runAnimation(bots, grid)
-
-
-
-
-
-
-
-
-
-sc.exitonclick()
+    sc.exitonclick()
 
