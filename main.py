@@ -176,9 +176,12 @@ def main():
                 continue
             if random.random() < 0.15: #probability of obstacle 10%
                 grid[i][j] = 1
+
+    #goal cannot be an obstacle
     for i in range(len(readLocations)):
         if grid[readLocations[i][0]][readLocations[i][1]] == 1:
-            grid[readLocations[i][0]][readLocations[i][1]] =0
+            grid[readLocations[i][0]][readLocations[i][1]] = 0
+
 
     print(grid)
 
