@@ -98,7 +98,7 @@ def main():
 
     #user inputs
     filename = input("Enter the filename: ") # file includes order and delivery location
-    numRobots = input("Enter the number of robots: ")
+    numRobots = 10
 
     #read input file to store orders and locations
     with open(filename, 'r') as file:
