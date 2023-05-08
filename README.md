@@ -17,4 +17,9 @@ grid.py
 - hey bryce wanna do this
 
 animation.py
-- hey brian wanna do this
+- runAnimation is the one function that is called in main, pass the robots array to the first parameter of run animation and the grid to the second. The whole animation is created and controlled from this one function call. 
+- Utilizes turtle module
+- Uses functions drawx and drawy to create the animated grid
+- Obstical function is used to create red circles, representing the randomly generated obstacles in known terrain.
+- moveRobots function controls how many pixels the robots are to move, and if their movement will be tracked by a line. 
+
