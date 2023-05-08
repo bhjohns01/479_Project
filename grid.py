@@ -17,12 +17,11 @@ class Node():
         return self.position != other.position
 
 class Robot():
-    
-    path = []
-    orders = []
-    delivery = []
+
     def __init__(self, path=None):
         self.path = path
+        self.orders = []
+        self.delivery = []
 
     def printPath(self):
         print(self.path)
