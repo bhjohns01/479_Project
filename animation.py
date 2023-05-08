@@ -154,6 +154,12 @@ def runAnimation(robots, grid):
                         moveRobots(bots[j], currentLocation = robots[j].path[i], nextLocation = robots[j].path[i])
                         bots[j].color('lightgreen')
 
+                    #Once first delivery is made turn turtle orange 
+                    elif robots[j].delivery[0][0] == robots[j].path[i][0] and robots[j].delivery[0][1] == robots[j].path[i][1]:
+                        moveRobots(bots[j], currentLocation = robots[j].path[i], nextLocation = robots[j].path[i])
+                        bots[j].color('orange')
+
+
                     #  in every other case besides the first and the last index, move to the next location in the path array
                     else:
                         moveRobots(bots[j], currentLocation = robots[j].path[i], nextLocation = robots[j].path[i + 1])
