@@ -3,7 +3,6 @@ import turtle
 
 import numpy as np
 # Not sure if I need to import robot if an object is passed to a function
-from grid import Robot
 
 import random 
 sc=turtle.Screen()
@@ -51,15 +50,26 @@ def drawx(val):
 def moveRobots(bot, currentLocation, nextLocation):
     
     bot.penup()
-    if(currentLocation == [0,0]):
+    if(currentLocation == (0,0)):
         bot.goto(-285, 285)
     else:
         bot.pendown()
-        bot.goto(-285  + currentLocation[0] * 30, 285 - currentLocation[1] * 30)
-    bot.pendown()
-    bot.goto(-285 + nextLocation[0] * 30, 285 - nextLocation[1] * 30)
-    bot.penup()
+        #bot.goto(-285  + currentLocation[1] * 30, 285 - currentLocation[0] * 30)
     
+    # Don't move if path not found 
+    if currentLocation[1] != -1:
+        bot.pendown()
+        bot.goto(-285 + nextLocation[1] * 30, 285 - nextLocation[0] * 30)
+        bot.penup()
+
+    # Bot with no path turns red
+    else:
+        bot.penup()
+        bot.color('red')
+        bot.goto(-315, 285)
+
+
+
 def createObstical(x, y):
     obstical = turtle.Turtle()
     obstical.penup()
@@ -128,9 +138,12 @@ def runAnimation(robots, grid):
     for i in range(longestRobotPath):
         for j in range(len(robots)):
             # check if robot 0 exits
-            if j is not None:
+            if len(robots[j].path) == 0:
+                moveRobots(bots[j], (0, -1), (0, 0))
+
+            else:
                 # check 
-                if (i < len(robots[j].path)) and (robots[j].path[i] is not None or robots[j].path[i] is not [0,0]):
+                if (i < len(robots[j].path)) and (robots[j].path[i] is not None or robots[j].path[i] is not [0,0]) and len(robots[j].path) != 0:
 
                     # initialize the location of the 'robot' when i = 0
                     if i == 0:
