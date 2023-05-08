@@ -1,4 +1,3 @@
-import random
 import math 
 
 
@@ -41,7 +40,6 @@ def A_star(grid, start, robots):
     closedNodes = []
 
     for robot in robots:
-        
         iteration = 0
         for deliveryNum in range(len(robot.delivery)):
             if(deliveryNum == 0):
@@ -91,7 +89,7 @@ def A_star(grid, start, robots):
                         openNode = childNode
             if(iteration >= 200):
                 #no solution
-                robot.path = [-1]
+                path = [-1]
                 robot.setFlag()
                 break
 
@@ -101,4 +99,7 @@ def A_star(grid, start, robots):
                 path.append(current.position)
                 current = current.parent
             robot.path = path[::-1]
-    return  
+    return
+
+         
+    
