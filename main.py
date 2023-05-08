@@ -164,13 +164,15 @@ def main():
 
 
     #create grid
-    size = 10
+    size = 20
     grid = np.zeros((size, size))
 
     #flag random indices for random obstacles
     for i in range(size):
         for j in range(size):
             if i == 0 and j == 0: #skip (0, 0), aka Food Warehouse
+                continue
+            if i == 1 and j == 1:
                 continue
             if random.random() < 0.15: #probability of obstacle 10%
                 grid[i][j] = 1

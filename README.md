@@ -1,5 +1,5 @@
 # 479_Project
-This is Bryce, Brian, and Katie's final project for 479
+This is Bryce, Brian, and Kati's final project for 479
 
 Main Function: 
 - Reads in a text file that includes multiple orders and their delivery locations
