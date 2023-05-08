@@ -164,7 +164,7 @@ def main():
 
 
     #create grid
-    size = 10
+    size = 20
     grid = np.zeros((size, size))
 
     #flag random indices for random obstacles
@@ -172,7 +172,9 @@ def main():
         for j in range(size):
             if i == 0 and j == 0: #skip (0, 0), aka Food Warehouse
                 continue
-            if random.random() < 0.1: #probability of obstacle 10%
+            if i == 1 and j == 1:
+                continue
+            if random.random() < 0.15: #probability of obstacle 10%
                 grid[i][j] = 1
 
     #goal cannot be an obstacle
@@ -185,7 +187,6 @@ def main():
 
     #call A* heuristic
     start = (0, 0)
-    goal = readLocations[0] # will need to for-loop around somehow
     g.A_star(grid, start, robots)
     for robot in robots:
         robot.printPath()
