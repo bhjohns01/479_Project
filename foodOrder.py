@@ -18,16 +18,12 @@ class foodOrder:
     def __init__(self, deliveryLoc, items = None):
         self.deliveryLoc = deliveryLoc
         self.items = {}
-        #self.orderSize = 0
         if items is not None:
             for item_name in items:
                 self.addItems(item_name)
-                #self.orderSize += int(item_name["size"])
-
 
     #Add the user inputed items to the foodOrder object
     def addItems(self, item_name):
-
         # define menu
         # SIZE: small = 1 // medium = 2 // large = 4
         menu = {
@@ -64,24 +60,6 @@ class foodOrder:
             else:
                 self.items[item_name] = {"quantity": 1, "isFrozen": item["isFrozen"], 
                                          "isFragile": item["isFragile"], "size": item["size"]}
-            
-            
-            #print(f"{item_name} added to the order")
-        #else:
-            #print(f"Sorry, we don't have {item_name} on the menu")
+        else:
+            print(f"Sorry, we don't have {item_name} on the menu")
 
-
-# # # # # # # # # # # # # # #
-# --- Testing the class --- #
-# # # # # # # # # # # # # # # 
-'''
-item = ["16oz Water", "16oz Water", "Eggs", "Frozen Pizza", "Soda"]
-
-# Test call of foodOrder Class
-order1 = foodOrder([2, 2], item)
-print('-----------------')
-print("Location: " + str(order1.deliveryLoc) + "\n")
-for i in order1.items:
-    print(order1.items[i])
-    print('\n')
-'''
