@@ -2,6 +2,7 @@ from foodOrder import foodOrder
 import numpy as np
 import random
 import grid as g
+import animation
 
 # pass in a single order and return bagged items
 def sorting(order):
@@ -190,5 +191,8 @@ def main():
     for robot in robots:
         robot.printPath()
 
+    animation.runAnimation(robots, grid)
+
+    
 if __name__ == '__main__':
     main()
