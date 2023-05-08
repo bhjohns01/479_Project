@@ -25,7 +25,13 @@ class Robot():
         self.flag = 0
 
     def printPath(self):
-        print(self.path)
+        if self.flag == 1:
+            print("no path available")
+        else:
+            print(self.path)
+            
+    def setFlag(self):
+        self.flag = 1
 
 def A_star(grid, start, robots):
     #create start and end nodes
