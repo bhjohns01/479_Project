@@ -1,18 +1,3 @@
-'''
------ class foodOrder -----
-
-Input:
-list of items, delivery location
-
-Output:
-list of items (if on menu) and their corresponding characteristics
-
-Main function call:
-foodOrder(items, location)
-- order is an array of strings (from an input file maybe?)
-- location is a 2D index 
-'''
-
 class foodOrder:
 
     def __init__(self, deliveryLoc, items = None):

@@ -182,7 +182,6 @@ def main():
         if grid[readLocations[i][0]][readLocations[i][1]] == 1:
             grid[readLocations[i][0]][readLocations[i][1]] = 0
 
-
     print(grid)
 
     #call A* heuristic
@@ -191,6 +190,5 @@ def main():
     for robot in robots:
         robot.printPath()
 
-    
 if __name__ == '__main__':
     main()
